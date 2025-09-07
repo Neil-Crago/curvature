@@ -112,15 +112,15 @@ fn update_visual_node(node: &mut VisualNode, belief: &SimpleBelief, resonance: &
 
 // Example SemanticState struct
 #[derive(Debug, Clone)]
-struct SemanticState {
-    coherence: f64, // 0.0 to 1.0
-    phase: f64,     // radians
+pub struct SemanticState {
+    pub coherence: f64, // 0.0 to 1.0
+    pub phase: f64,     // radians
 }
 
 #[derive(Clone)]
-struct SimpleBelief {
-    mean: f64,
-    variance: f64,
+pub struct SimpleBelief {
+    pub mean: f64,
+    pub variance: f64,
 }
 
 impl BeliefTensor for SimpleBelief {
