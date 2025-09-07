@@ -3,6 +3,10 @@ name = "curvature"
 authors = ["Neil Crago"]
 version = "0.1.0"
 edition = "2024"
+description = "Curvature estimation for point clouds"
+license = "MIT"
+repository = "https://github.com/NeilCrago/curvature"
+keywords = ["mathematics", "curvature", "Lomb-Scargle", "Bayesian", "experimental"]
 
 [dependencies]
 coheron = { path = "../coheron" }
