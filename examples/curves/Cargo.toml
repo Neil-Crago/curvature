@@ -1,0 +1,8 @@
+[package]
+name = "curves"
+authors = ["Neil Crago"]
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+curvature ={ path = "../../" }
