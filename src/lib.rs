@@ -14,7 +14,7 @@ pub use core::PathEvaluator;
 pub use coherence::CoherencePulse;
 pub use curvature_signal::CurvatureSignal;
 pub use entangle::{Coupling, SemanticDomain, SimpleEntangleMap};
-pub use gkernel::{ResonanceEdge, ResonanceNode, GraphKernel};
+pub use gkernel::{ResonanceNode, ResonanceEdge, GraphKernel};
 pub use hotspot_detector::{HotspotDetector, PercentileHotspot};
 pub use path_evaluator::{PathMetrics, TrajectoryPath};
 pub use resonance::{

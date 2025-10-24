@@ -9,7 +9,7 @@ repository = "https://github.com/NeilCrago/curvature"
 keywords = ["mathematics", "curvature", "Lomb-Scargle", "Bayesian", "experimental"]
 
 [dependencies]
-coheron = { path = "../coheron" }
+coheron = "0.1.0"
 ndarray = "0.15.6"
 omni-wave = "0.2.1"
 rand = "0.9.2"

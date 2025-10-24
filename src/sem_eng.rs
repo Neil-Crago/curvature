@@ -74,7 +74,7 @@ where
         self.step += 1; // Increment step counter
     }
 
-    fn apply_control(&self, law: &S::ControlLaw) -> F::Position {
+    fn apply_control(&self, _law: &S::ControlLaw) -> F::Position {
         self.position // placeholder
     }
 }

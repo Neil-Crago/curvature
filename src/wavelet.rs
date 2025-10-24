@@ -150,7 +150,7 @@ pub struct EntropyWeightedFusion;
 impl WaveletFusionStrategy for EntropyWeightedFusion {
     fn fuse(
         decompositions: &[WaveletDecomposition],
-        context: &FusionContext,
+        _context: &FusionContext,
     ) -> WaveletDecomposition {
         let mut total_weight = 0.0;
         let mut fused_coeffs = vec![0.0; decompositions[0].coefficients.len()];

@@ -26,7 +26,7 @@ impl CurvatureSignal {
             let steps = 10; // adjustable resolution
             for j in 0..steps {
                 let t = j as f64 / steps as f64;
-                let x = x0 + t * (x1 - x0);
+                let _x = x0 + t * (x1 - x0);
                 let y = y0 + t * (y1 - y0);
                 reconstructed.push(y); // or push (x, y) if needed
             }

@@ -151,7 +151,7 @@ impl ResonanceField for GridField {
         // Flatten the 2D coherence_map into a 1D slice for signal
         // This is a simple implementation; you may want to adjust as needed
         // For now, return the first row as a slice
-        self.coherence_map.get(0).map(|row| row.as_slice()).unwrap_or(&[])
+        self.coherence_map.first().map(|row| row.as_slice()).unwrap_or(&[])
     }
 
     fn domain_label(&self) -> &str {
@@ -163,7 +163,7 @@ impl ResonanceField for GridField {
     }
 }
 
-fn init_field(width: usize, height: usize) -> GridField {
+fn _init_field(width: usize, height: usize) -> GridField {
     let coherence_map = vec![vec![0.5; width]; height];
     GridField {
         coherence_map,

@@ -11,8 +11,8 @@ pub enum SemanticDomain {
 
 #[derive(Clone)]
 pub struct Coupling {
-    strength: f64,
-    phase_shift: f64,
+    _strength: f64,
+    _phase_shift: f64,
 }
 
 pub struct SimpleEntangleMap {
@@ -34,8 +34,8 @@ impl EntangleMap for SimpleEntangleMap {
             .get(&(a.clone(), b.clone()))
             .cloned()
             .unwrap_or(Coupling {
-                strength: 0.0,
-                phase_shift: 0.0,
+                _strength: 0.0,
+                _phase_shift: 0.0,
             })
     }
 

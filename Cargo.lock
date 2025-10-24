@@ -17,6 +17,8 @@ checksum = "2fd1289c04a9ea8cb22300a459a72a385d7c73d3259e2ed7dcb2af674838cfa9"
 [[package]]
 name = "coheron"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1f3c5dbffd9b3152d35b97a21c500f3c647ccadb1dd43c831a8241fba478adf1"
 dependencies = [
  "ndarray",
  "omni-wave",

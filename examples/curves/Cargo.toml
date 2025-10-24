@@ -3,6 +3,7 @@ name = "curves"
 authors = ["Neil Crago"]
 version = "0.1.0"
 edition = "2024"
+description = "Examples for the curvature crate"
 
 [dependencies]
 curvature ={ path = "../../" }
