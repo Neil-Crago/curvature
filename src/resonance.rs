@@ -1,3 +1,6 @@
+/// Resonance module: defines resonance fields, gradients, and related traits.
+/// This module provides abstractions for resonance fields,
+/// entanglement maps, and law synthesis engines.
 use crate::wavelet::{
     FusionContext, WaveletBasis, WaveletDecomposition, 
     WaveletEngine, WaveletFusionStrategy, compute_entropy

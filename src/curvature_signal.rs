@@ -1,3 +1,5 @@
+/// Represents curvature signals and provides methods for reconstruction
+/// and frequency estimation.
 #[derive(Debug, Clone)]
 pub struct CurvatureSignal {
     /// Sample positions (e.g., time or spatial domain)

@@ -1,3 +1,7 @@
+/// Coherence module: manages coherence pulses to maintain signal integrity
+/// and reduce entropy in belief tensors.
+/// This module defines traits and implementations for triggering coherence
+/// pulses based on entropy thresholds.
 use crate::resonance::{EntangleMap};
 use coheron::traits::BeliefTensor;
 

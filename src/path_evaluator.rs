@@ -1,3 +1,5 @@
+/// Path evaluator module: evaluates paths based on curvature signals.
+/// Defines structures and methods for computing path metrics
 #[derive(Debug)]
 pub struct PathMetrics {
     pub length: f64,

@@ -1,3 +1,6 @@
+/// Wavelet transform and fusion module.
+/// Provides traits and implementations for wavelet decomposition,
+/// reconstruction, and fusion strategies.
 use omni_wave::*;
 use ndarray::ArrayViewMut1;
 

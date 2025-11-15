@@ -16,9 +16,9 @@ checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
 name = "coheron"
-version = "0.1.1"
+version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "10a4b142a3777343d8c3187166e3482a5eb1acc0924bc0ffcf9a54b9224a3548"
+checksum = "f8cade56ce85535cc6d18bee0249417cbf44269bb69bdb4ed8705a7d2b3d82b0"
 dependencies = [
  "ndarray 0.16.1",
  "omni-wave",
@@ -27,7 +27,7 @@ dependencies = [
 
 [[package]]
 name = "curvature"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "coheron",
  "ndarray 0.15.6",

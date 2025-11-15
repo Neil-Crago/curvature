@@ -1,3 +1,4 @@
+/// Entangle map implementation for semantic domains.
 use crate::resonance::EntangleMap;
 use std::collections::HashMap;
 

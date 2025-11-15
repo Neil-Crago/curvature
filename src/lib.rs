@@ -1,4 +1,6 @@
-
+/// Curvature crate: provides tools for analyzing curvature signals,
+/// performing wavelet fusion, managing resonance graphs, and
+/// handling semantic entanglement.
 pub mod curvature_signal;
 pub mod entangle;
 pub mod gkernel;

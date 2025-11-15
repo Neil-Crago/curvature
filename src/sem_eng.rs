@@ -1,3 +1,6 @@
+/// Semantic engine module: integrates belief tensors,
+/// resonance fields, entanglement maps, and law synthesis.
+/// Defines the SemanticEngine struct and related visualizations.
 use coheron::beliefs::{GaussianBelief, Observation};
 use crate::coherence::CoherencePulse;
 use crate::entangle::{SemanticDomain, SimpleEntangleMap};

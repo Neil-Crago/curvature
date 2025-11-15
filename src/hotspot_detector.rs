@@ -1,4 +1,6 @@
-
+/// Hotspot detection module for curvature signals.
+/// Defines traits and implementations for identifying hotspots
+/// in curvature data.
 pub trait HotspotDetector {                                                                             
     fn detect(&self, signal: &[f64]) -> Vec<usize>;
 }

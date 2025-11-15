@@ -1,3 +1,6 @@
+/// Graph kernel implementation for resonance nodes and edges.
+/// Defines structures and methods for managing resonance graphs.
+/// This module is part of the curvature crate.
 #[allow(dead_code)]
 pub struct ResonanceNode {
     id: usize,
