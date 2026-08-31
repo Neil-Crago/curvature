@@ -28,7 +28,7 @@ pub fn haar_transform(signal: &[f64]) -> Vec<f64> {
 /// - Reversibility: reconstruct(decompose(s)) ≈ s
 /// - Energy preservation: sum of squares of approximation + detail ≈ original signal energy
 /// - Orthogonality: inner product of different wavelet functions is zero
-/// Unified interface for wavelet transforms.
+///   Unified interface for wavelet transforms.
 pub trait WaveletTransform {
     /// Signal type accepted by the transform.
     type Signal;
