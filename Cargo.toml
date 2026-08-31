@@ -14,7 +14,7 @@ documentation = "https://docs.rs/curvature"
 rust-version = "1.85"
 
 [dependencies]
-coheron = "0.1.4"
+coheron = "0.1.5"
 ndarray = "0.15.6"
 omni-wave = "0.2.1"
 rand = "0.10.1"
