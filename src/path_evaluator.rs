@@ -1,18 +1,26 @@
 /// Path evaluator module: evaluates paths based on curvature signals.
-/// Defines structures and methods for computing path metrics
+/// Defines structures and methods for computing path metrics.
+/// Aggregate path metrics computed from a curvature signal.
 #[derive(Debug)]
 pub struct PathMetrics {
+    /// Total path length traversed.
     pub length: f64,
+    /// Manhattan-style displacement of the trajectory.
     pub manhattan_distance: f64,
+    /// X coordinates for the simulated path.
     pub x: Vec<f64>,
+    /// Y coordinates for the simulated path.
     pub y: Vec<f64>,
 }
 
+/// Simple trajectory evaluator that projects curvature into a 2D path.
 pub struct TrajectoryPath {
-    pub dz_dt: f64, // optional z-bias
+    /// Optional z-bias, exposed for future trajectory extensions.
+    pub dz_dt: f64,
 }
 
 impl TrajectoryPath {
+    /// Evaluate a curvature-driven trajectory over a time step.
     pub fn evaluate(&self, curvature: &[f64], dt: f64) -> PathMetrics {
         let mut theta = Vec::with_capacity(curvature.len());
         let mut x = Vec::with_capacity(curvature.len());
@@ -45,4 +53,3 @@ impl TrajectoryPath {
         }
     }
 }
-

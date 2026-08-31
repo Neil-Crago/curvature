@@ -1,46 +1,53 @@
-/// Curvature crate: provides tools for analyzing curvature signals,
-/// performing wavelet fusion, managing resonance graphs, and
-/// handling semantic entanglement.
-pub mod curvature_signal;
-pub mod entangle;
-pub mod gkernel;
-pub mod resonance;
-pub mod sem_eng;
-pub mod wavelet;
-pub mod hotspot_detector;
-pub mod path_evaluator;
-pub mod core;
-pub mod coherence;
+#![warn(missing_docs)]
 
-pub use core::PathEvaluator;
-pub use coherence::CoherencePulse;
-pub use curvature_signal::CurvatureSignal;
-pub use entangle::{Coupling, SemanticDomain, SimpleEntangleMap};
-pub use gkernel::{ResonanceNode, ResonanceEdge, GraphKernel};
-pub use hotspot_detector::{HotspotDetector, PercentileHotspot};
-pub use path_evaluator::{PathMetrics, TrajectoryPath};
-pub use resonance::{
-    Resonance, 
-    Position, 
-    Gradient, 
-    GridField, 
-    BiologicalField,
-    EntangleMap,
-    LawSynthEngine,
-    ResonanceField,
-};
-pub use sem_eng::{
-    SemanticEngine, 
-    VisualEdge, 
-    VisualNode, 
-    EntanglementOverlay, 
-    Synth, 
-    Field};
-pub use wavelet::{
-    FusionContext, 
-    WaveletBasis, 
-    WaveletDecomposition, 
-    WaveletEngine, 
-    WaveletFusionStrategy, 
-    compute_entropy,
-};
+//! Curvature is a research-oriented Rust library for sparse-signal analysis,
+//! wavelet-based smoothing, resonance fields, and curvature estimation.
+//!
+//! The crate is designed for experimentation with noisy or irregular data where
+//! a robust signal-first workflow is more useful than a single hardcoded model.
+//! It includes primitives for reconstructing curvature signals, fusing wavelet
+//! coefficients, evaluating trajectories, and modeling resonance-like structures.
+//!
+//! # Example
+//!
+//! ```rust
+//! use curvature::{CurvatureSignal, PercentileHotspot, TrajectoryPath};
+//!
+//! let signal = CurvatureSignal {
+//!     positions: vec![0.0, 0.2, 0.5, 0.7, 1.0],
+//!     values: vec![1.0, 1.5, 0.8, 2.0, 1.2],
+//! };
+//!
+//! let reconstructed = signal.reconstruct();
+//! let detector = PercentileHotspot { percentile: 80.0 };
+//! let hotspots = detector.detect(&reconstructed);
+//! let path = TrajectoryPath { dz_dt: 0.1 };
+//! let metrics = path.evaluate(&reconstructed, 0.01);
+//!
+//! assert!(!hotspots.is_empty() || metrics.length >= 0.0);
+//! ```
+
+/// Coherence pulse primitives.
+pub mod coherence;
+/// Core evaluation traits.
+pub mod core;
+/// Curvature signal reconstruction utilities.
+pub mod curvature_signal;
+/// Semantic entanglement primitives and coupling maps.
+pub mod entangle;
+/// Graph kernel structures for resonance-like connectivity.
+pub mod gkernel;
+/// Hotspot detection and thresholding utilities.
+pub mod hotspot_detector;
+/// Trajectory and path evaluation metrics.
+pub mod path_evaluator;
+/// Curated, user-facing types for day-to-day usage.
+pub mod prelude;
+/// Resonance-field and field-propagation abstractions.
+pub mod resonance;
+/// Semantic-engine overlays and synthetic field representations.
+pub mod sem_eng;
+/// Wavelet transforms, fusion strategies, and entropy helpers.
+pub mod wavelet;
+
+pub use prelude::*;

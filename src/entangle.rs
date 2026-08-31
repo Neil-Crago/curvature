@@ -2,20 +2,29 @@
 use crate::resonance::EntangleMap;
 use std::collections::HashMap;
 
+/// Identifies a semantic domain used by the entanglement model.
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum SemanticDomain {
+    /// Biological or living-system domain.
     Biological,
+    /// Quantum or probabilistic domain.
     Quantum,
+    /// Linguistic or symbolic domain.
     Linguistic,
+    /// Cognitive or reasoning domain.
     Cognitive,
 }
 
+/// Describes the interaction between two semantic domains.
 #[derive(Clone)]
 pub struct Coupling {
+    /// Effective interaction strength.
     _strength: f64,
+    /// Phase offset between domains.
     _phase_shift: f64,
 }
 
+/// A simple in-memory map of domain-to-domain coupling values.
 pub struct SimpleEntangleMap {
     map: HashMap<(SemanticDomain, SemanticDomain), Coupling>,
 }

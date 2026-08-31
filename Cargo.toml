@@ -1,16 +1,20 @@
 [package]
 name = "curvature"
 authors = ["Neil Crago"]
-version = "0.1.2"
+version = "0.1.4"
 edition = "2024"
-description = "Curvature estimation for point clouds"
+description = "Curvature estimation, resonance analysis, and signal fusion primitives for sparse or noisy data."
 license = "MIT"
 repository = "https://github.com/NeilCrago/curvature"
-keywords = ["mathematics", "curvature", "Lomb-Scargle", "Bayesian", "experimental"]
+homepage = "https://github.com/NeilCrago/curvature"
+readme = "README.md"
+keywords = ["mathematics", "curvature", "signal-processing", "wavelet", "Lomb-Scargle", "Bayesian", "experimental"]
+categories = ["science", "mathematics", "algorithms"]
 documentation = "https://docs.rs/curvature"
+rust-version = "1.85"
 
 [dependencies]
-coheron = "0.1.2"
+coheron = "0.1.4"
 ndarray = "0.15.6"
 omni-wave = "0.2.1"
-rand = "0.9.2"
+rand = "0.10.1"

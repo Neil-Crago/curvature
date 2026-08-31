@@ -1,14 +1,15 @@
+use crate::coherence::CoherencePulse;
+use crate::entangle::{SemanticDomain, SimpleEntangleMap};
+use crate::resonance::{EntangleMap, LawSynthEngine, Position, Resonance, ResonanceField};
 /// Semantic engine module: integrates belief tensors,
 /// resonance fields, entanglement maps, and law synthesis.
 /// Defines the SemanticEngine struct and related visualizations.
 use coheron::beliefs::{GaussianBelief, Observation};
-use crate::coherence::CoherencePulse;
-use crate::entangle::{SemanticDomain, SimpleEntangleMap};
 use coheron::fusion::{BeliefFusion, FusionStrategy};
-use crate::resonance::{Resonance, EntangleMap, LawSynthEngine, Position, ResonanceField};
-use coheron::structs::{ControlLaw};
-use coheron::traits::{BeliefTensor};
+use coheron::structs::ControlLaw;
+use coheron::traits::BeliefTensor;
 
+/// Combines belief fusion, resonance state, and entanglement synthesis.
 pub struct SemanticEngine<B, F, E, S, BF>
 where
     B: BeliefTensor,
@@ -18,15 +19,24 @@ where
     BF: BeliefFusion<B>,
     F::Position: Copy,
 {
+    /// Belief states tracked by the engine.
     pub beliefs: Vec<B>,
+    /// Mechanism used to fuse multiple beliefs.
     pub fusion_strategy: Box<dyn FusionStrategy<B>>,
+    /// Resonance field under observation.
     pub field: F,
+    /// Coupling relationships between domains.
     pub entanglement: E,
+    /// Synthesizer used to generate control laws.
     pub synthesizer: S,
+    /// Fusion mechanism for composite belief state.
     pub belief_fusion: BF,
+    /// Active field position.
     pub position: F::Position,
+    /// Optional pulse-based coherence trigger.
     pub pulse: Box<dyn CoherencePulse<B, E>>,
-    pub step: usize, // Add step counter
+    /// Simulation step counter.
+    pub step: usize,
 }
 
 impl<B, F, E, S, BF> SemanticEngine<B, F, E, S, BF>
@@ -38,6 +48,7 @@ where
     S: LawSynthEngine<B, F, E>,
     BF: BeliefFusion<B>,
 {
+    /// Advance the semantic engine by one simulation step.
     pub fn step(&mut self) {
         // Update each belief individually
         for belief in &mut self.beliefs {
@@ -59,11 +70,12 @@ where
         self.field.propagate(&self.position, &resonance);
 
         if let Some(belief) = self.beliefs.first()
-            && self.pulse.should_trigger(belief) {
-                for belief in &mut self.beliefs {
-                    self.pulse.trigger(belief, &mut self.entanglement);
-                }
+            && self.pulse.should_trigger(belief)
+        {
+            for belief in &mut self.beliefs {
+                self.pulse.trigger(belief, &mut self.entanglement);
             }
+        }
 
         println!(
             "Step {:>2}: Pos ({:.2}, {:.2}), Fused Mean {:.2}, Resonance Amp {:.2}, Freq {:.2}",
@@ -82,26 +94,42 @@ where
     }
 }
 
+/// A visualization node representing a semantic belief or signal state.
 pub struct VisualNode {
+    /// Stable node identifier.
     pub id: usize,
+    /// 2D visual position.
     pub position: [f64; 2],
-    pub coherence: f64, // color intensity
-    pub phase: f64,     // hue or rotation
-    pub entropy: f64,   // size or blur
+    /// Visual coherence intensity.
+    pub coherence: f64,
+    /// Phase used for color or rotation.
+    pub phase: f64,
+    /// Entropy or blur-like size factor.
+    pub entropy: f64,
 }
 
+/// A visual connection between two nodes in the semantic graph.
 pub struct VisualEdge {
+    /// Source node id.
     pub from: usize,
+    /// Destination node id.
     pub to: usize,
-    pub amplitude: f64, // thickness
-    pub frequency: f64, // animation speed
+    /// Visual amplitude or weight.
+    pub amplitude: f64,
+    /// Visual frequency or animation intensity.
+    pub frequency: f64,
 }
 
+/// Overlay metadata describing a semantic entanglement link.
 pub struct EntanglementOverlay {
+    /// First domain in the relation.
     pub domain_a: SemanticDomain,
+    /// Second domain in the relation.
     pub domain_b: SemanticDomain,
-    pub strength: f64,    // opacity or link intensity
-    pub phase_shift: f64, // color gradient or distortion
+    /// Link strength used for opacity or thickness.
+    pub strength: f64,
+    /// Phase shift for visual distortion or hue.
+    pub phase_shift: f64,
 }
 
 // Example usage
@@ -114,15 +142,21 @@ fn update_visual_node(node: &mut VisualNode, belief: &SimpleBelief, resonance: &
 */
 
 // Example SemanticState struct
+/// A compact semantic state used for visualization or belief updates.
 #[derive(Debug, Clone)]
 pub struct SemanticState {
-    pub coherence: f64, // 0.0 to 1.0
-    pub phase: f64,     // radians
+    /// Coherence value in the range [0, 1].
+    pub coherence: f64,
+    /// Phase angle, in radians.
+    pub phase: f64,
 }
 
+/// Minimal belief used for examples and prototypes.
 #[derive(Clone)]
 pub struct SimpleBelief {
+    /// Mean estimate of the belief.
     pub mean: f64,
+    /// Variance or uncertainty in the belief.
     pub variance: f64,
 }
 
@@ -157,6 +191,7 @@ impl BeliefTensor for SimpleBelief {
     }
 }
 
+/// Minimal resonance field implementation used in examples.
 pub struct Field;
 
 impl ResonanceField for Field {
@@ -194,6 +229,7 @@ impl ResonanceField for Field {
     }
 }
 
+/// Minimal law synthesizer used for example integration tests.
 pub struct Synth;
 
 impl LawSynthEngine<SimpleBelief, Field, SimpleEntangleMap> for Synth {
@@ -235,9 +271,7 @@ impl EntangleMap for () {
     type Domain = ();
     type Coupling = f64;
 
-    fn new() -> Self {
-        
-    }
+    fn new() -> Self {}
 
     fn get_coupling(&self, _domain_a: &Self::Domain, _domain_b: &Self::Domain) -> Self::Coupling {
         0.0 // minimal implementation

@@ -2,19 +2,24 @@
 /// and reduce entropy in belief tensors.
 /// This module defines traits and implementations for triggering coherence
 /// pulses based on entropy thresholds.
-use crate::resonance::{EntangleMap};
+use crate::resonance::EntangleMap;
 use coheron::traits::BeliefTensor;
 
+/// A coherence pulse triggers when a belief exceeds an entropy threshold.
 pub trait CoherencePulse<B, E>
 where
     B: BeliefTensor,
     E: EntangleMap,
 {
+    /// Trigger a coherence intervention for the given belief and entanglement map.
     fn trigger(&mut self, belief: &mut B, entanglement: &mut E);
+    /// Determine whether the coherence pulse should fire for the provided belief.
     fn should_trigger(&self, belief: &B) -> bool;
 }
 
+/// A simple entropy-driven coherence pulse implementation.
 pub struct EntropyPulse {
+    /// Entropy threshold that triggers the pulse.
     pub threshold: f64,
 }
 
